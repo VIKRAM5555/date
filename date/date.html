@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+    <script >
+
+var dateelement=document.createElement('input');
+dateelement.setAttribute('type','date');
+dateelement.setAttribute('id','date');
+document.body.append(dateelement);
+
+var button=document.createElement('button');
+button.innerHTML="Display data";
+button.className="btn btn-primary";
+button.setAttribute('type','button');
+button.addEventListener('click',displaydata);
+document.body.append(button);
+
+
+function addEle( e ,gv){
+var millsec =document.createElement(e)
+millsec.innerHTML=gv
+document.body.append(millsec)
+}
+
+
+function displaydata(){
+    let input=document.getElementById("date").value;
+   if(Date.parse(input)){
+    var inputdate=new Date(input);
+    var currentdate=new Date();
+    // console.log(inputdate,currentdate);
+    var millisecdiff=currentdate.getTime()-inputdate.getTime();
+    console.log(millisecdiff);
+
+    var seconddiff=Math.floor(millisecdiff/1000);
+    console.log(seconddiff);
+    
+    var minutediff=Math.floor(seconddiff/60);
+    console.log(minutediff);
+    var hoursdiff=Math.floor(minutediff/60);
+    console.log(hoursdiff);
+
+    var daydiff=Math.floor(hoursdiff/24);
+    console.log(daydiff);
+
+    var yeardiff=currentdate.getFullYear()-inputdate.getFullYear();
+    console.log(yeardiff);
+
+      console.log(currentdate.getMonth());
+    var monthdiff=(yeardiff*12)+(currentdate.getMonth()-inputdate.getMonth());
+    console.log(monthdiff);
+
+   }
+   else{
+     console.log("give a proper valid date")  
+   }
+   var milsec1=addEle("div",millisecdiff)
+var milsec2=addEle("div",seconddiff)
+var milsec3=addEle("div",minutediff)
+var milsec4=addEle("div",hoursdiff)
+var milsec5=addEle("div",daydiff)
+}
+
+    </script>
+
+</body>
+</html>
